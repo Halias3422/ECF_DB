@@ -1,0 +1,22 @@
+# fly.toml file generated for le-quai-antique-db on 2023-03-16T18:22:09+01:00
+
+app = "le-quai-antique-db"
+kill_signal = "SIGINT"
+kill_timeout = 5
+primary_region = "cdg"
+processes = []
+
+[env]
+	MYSQL_DATABASE = "le-quai-antique-db"
+	MYSQL_USER = "hh9acw196zjemkldeebe"
+
+[build]
+	image = "mysql:8"
+
+[experimental]
+  cmd = [
+    "--default-authentication-plugin", "mysql_native_password",
+    "--datadir", "/data/mysql",
+    "--performance-schema=OFF",
+    "--innodb-buffer-pool-size", "64M"
+  ]

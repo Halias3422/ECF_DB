@@ -6,5 +6,6 @@ ENV MYSQL_USER=$MYSQL_USER
 ENV MYSQL_PASSWORD=$MYSQL_PASSWORD
 
 
-COPY ./docker-entrypoint-initdb.d /docker-entrypoint-initdb.d/
 COPY ./initDB.sql /docker-entrypoint-initdb.d/
+
+CMD ["mysql", "-u$MYSQL_USER", "-p$MYSQL_PASSWORD", "$MYSQL_DATABASE", "<", "/docker-entrypoint-initdb.d/initDB.sql"]

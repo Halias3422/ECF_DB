@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  le-quai-antique-db:
+    image: mysql:8.0
+    container_name: le-quai-antique-db
+    restart: always
+    env_file: ./.env
+    environment:
+      MYSQL_DATABASE: $MYSQL_DATABASE
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MYSQL_USER: $MYSQL_USER
+      MYSQL_PASSWORD: $MYSQL_PASSWORD
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    volumes:
+      - db_data:/var/lib/mysql
+      - .:/docker-entrypoint-initdb.d
+
+volumes:
+  db_data:

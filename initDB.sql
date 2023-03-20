@@ -1,4 +1,3 @@
-
 CREATE TABLE IF NOT EXISTS Users (
 	id char(36) DEFAULT (UUID()) PRIMARY KEY,
 	email VARCHAR(255) NOT NULL,
@@ -70,6 +69,8 @@ CREATE TABLE IF NOT EXISTS Restaurant (
 	seatsCapacity INT NOT NULL
 );
 
+SET NAMES 'utf8';
+
 INSERT INTO Restaurant ()
 VALUES (DEFAULT, 45);
 
@@ -83,28 +84,94 @@ INSERT INTO Categories ()
 VALUES (DEFAULT, 'Dessert');
 
 INSERT INTO Categories ()
-VALUES (DEFAULT, 'Salades');
+VALUES (DEFAULT, 'Salade');
 
 INSERT INTO Categories ()
-VALUES (DEFAULT, 'Burgers');
+VALUES (DEFAULT, 'Burger');
+
+INSERT INTO Categories ()
+VALUES (DEFAULT, 'Sandwich');
 
 INSERT INTO Dishes ()
-VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Entrée'),'asperges-toastees.jpg', 'asperges toastees', 'description recette 1', '15.99');
+VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Entrée'), 'betterave-confite.webp', 'Nos légumes confits', 'Mise en bouche végétale. Découvrez nos légumes confits, fondants en bouche. Un assortiment spécialement conçu pour mettre chaque ingrédient en valeur.', '8.99');
+
 INSERT INTO Dishes ()
-VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Plat principal'), 'betterave-confite.jpg', 'betterave confite', 'description recette 2', '15.99');
+VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Entrée'), 'pexels-ana-madeleine-uribe-2762939.webp', 'Mini pizza', "Mini pizza gourmande au fromage. Idéal pour se réchauffer et s'ouvrir l'appétit.", '6.99');
+
 INSERT INTO Dishes ()
-VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Plat principal'),'courgettes-pochees.jpg', 'courgettes pochees', 'description recette 3', '15.99');
+VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Entrée'), 'plateau-charcuterie.webp', 'Le plateau de charcuterie', "À partager entre amis, un assortiment des meilleurs ingrédients de la région. Rien de tel pour entamer la soirée. Nous vous conseillons d'accompagner cette dégustation d'une de nos bouteilles de vin rouge.", '18.99');
+
 INSERT INTO Dishes ()
-VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Dessert'), 'crepes.jpg', 'crepes', 'description recette 4', '15.99');
+VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Entrée'), 'pexels-nishant-aneja-2955816.webp', 'Tourte à la viande', 'Mini tourte à la viande. Spécialité locale revisitée par le Chef. Un de nos best-sellers.', '6.99');
+
 INSERT INTO Dishes ()
-VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Dessert'), 'dessert-glace.jpg', 'glace', 'description recette 5', '15.99');
+VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Sandwich'), 'sandwich-vegetarien.webp', 'Le végétarien', "Salade, tomates, oignons, pâte à l'ail. Une explosion de saveur contenue entre deux tranches de délicieux pain complet.", '7.99');
+
+INSERT INTO Dishes ()
+VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Sandwich'), 'pexels-rajdeepcraft-6416558.webp', 'Le rustique', "Un pain frais, un fromage mature, un jambon cru fort en saveurs, de la salade fraîche, des tomates juteuses et une touche de moutarde pour relever le tout.", '6.99');
+
+
+INSERT INTO Dishes ()
+VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Plat principal'), 'asperges-toastees.webp', 'Tofu grillé et ses asperges', "Un tendre steak de tofu poêlé accompagné de ses asperges grillées et de son œuf poché.  Un repas léger et gourmand.", '12.99');
+
+INSERT INTO Dishes ()
+VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Plat principal'), 'courgettes-pochees.webp', 'batons de courgettes grillées', "De fins bâtonnets de courgettes légèrement dorés à la poêle pour allier le croquant a la douceur de l'ingrédient. Surmonté de son œuf poché et de sa salade fraîche.", '11.99');
+
+INSERT INTO Dishes ()
+VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Plat principal'), 'roti-epinards.webp', 'Roti aux épinards', "Un délicieux rôti tendre et juteux. En accompagnement, épinards et purée. Le tout fond dans la bouche pour un repas comme sur un nuage.", '16.99');
+
+INSERT INTO Dishes ()
+VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Plat principal'), 'pizza-au-four.webp', 'La pizza au four', "Préparée par notre pizzaïolo, découvrez la pizza épicée aux champignons. Cuite au four à l'ancienne pour une cuisson optimale.", '14.99');
+
+INSERT INTO Dishes ()
+VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Plat principal'), 'pexels-taha-samet-arslan-7627407.webp', 'Saumon aux épinards', "Un tendre morceau de saumon fumé légèrement doré accompagné d'épinards à la crème et de sa sauce citronnée. ", '14.99');
+
+INSERT INTO Dishes ()
+VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Dessert'), 'pexels-nishant-aneja-2955820.webp', 'Donuts au chocolat', "Difficile d'y résister. De délicieux donuts recouverts d'un glaçage chocolaté.", '4.99');
+
+INSERT INTO Dishes ()
+VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Dessert'), 'pexels-spotwizardlee-9884561.webp', 'Douceur au caramel', "Un flan fondant au caramel pour terminer son repas en oubliant tous ses problèmes. Encore meilleur accompagné de son café.", '7.99');
+
+INSERT INTO Dishes ()
+VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Dessert'), 'crepes.webp', 'Les Crêpes du chef', "Redécouvrez le plaisir des crêpes d'autrefois. La recette est une des spécialités du Chef et le secret est bien gardé !", '6.99');
+
+INSERT INTO Dishes ()
+VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Dessert'), 'dessert-glace.webp', 'Glace framboise et vanille', "Finir son repas par une glace est toujours une bonne idée. D'autant plus quand celle-ci est faite maison par des mains expertes. Un régal qui plaira à tous.", '4.99');
+
+INSERT INTO Dishes ()
+VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Dessert'), 'pexels-dima-valkov-5665639.webp', 'Boules de coco', "De délicieuses boules de coco glacées accompagnées de leur framboise. Un dessert des plus raffinés.", '3.99');
+
+INSERT INTO Dishes ()
+VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Dessert'), 'pexels-kelvin-agustinus-7190365.webp', 'Smoothies fruités', "Pour terminer son repas sur un goût d'été. Découvrez nos smoothies fruités, fraîcheur et plaisir garantis.", '5.99');
+
+INSERT INTO Dishes ()
+VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Burger'), 'burger-l-affame.webp', "L'affamé", "Pour ceux qui n'ont pas froid aux yeux ! Rien ne sert d'en parler, les images parlent d'elles-mêmes.", '12.99');
+
+INSERT INTO Dishes ()
+VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Burger'), 'double-cheeseburger.webp', "Le double Cheeseburger", "Un classique. Robuste et préparé avec les meilleurs ingrédients. ", '11.99');
+
+INSERT INTO Dishes ()
+VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Salade'), 'salade-provencale.webp', "La salade provencale", "Un goût de soleil en Savoie. Réinvention de la salade provençale avec les produits locaux. Légère, fraîche, il lui suffit d'une noix d'huile d'olive pour faire exploser ses arômes.", '9.99');
+
+INSERT INTO Dishes ()
+VALUES (DEFAULT, (SELECT id FROM Categories WHERE Categories.name = 'Salade'), 'salade-mais.webp', "Salade relevée au maïs ", "D'inspiration sud américaine. Goutez cette merveilleuse salade épicée garnie de maïs, citron, soja, épinards et d'autres délicieux ingrédients encore.", '8.99');
 
 INSERT INTO Gallery_dishes ()
-VALUES (DEFAULT, 'pizza au four', 'pizza-au-four.jpg');
+VALUES (DEFAULT, 'pizza au four', 'pizza-au-four.webp');
 INSERT INTO Gallery_dishes ()
-VALUES (DEFAULT, 'double cheeseburger', 'double-cheeseburger.jpg');
+VALUES (DEFAULT, 'double cheeseburger', 'double-cheeseburger.webp');
 INSERT INTO Gallery_dishes ()
-VALUES (DEFAULT, 'plateau charcuterie', 'plateau-charcuterie.jpg');
+VALUES (DEFAULT, 'plateau de charcuterie', 'plateau-charcuterie.webp');
+INSERT INTO Gallery_dishes ()
+VALUES (DEFAULT, 'Flan fondant au caramel', 'pexels-spotwizardlee-9884561.webp');
+INSERT INTO Gallery_dishes ()
+VALUES (DEFAULT, 'Boules de coco', 'pexels-dima-valkov-5665639.webp');
+INSERT INTO Gallery_dishes ()
+VALUES (DEFAULT, 'Le rustique', 'pexels-rajdeepcraft-6416558.webp');
+INSERT INTO Gallery_dishes ()
+VALUES (DEFAULT, 'Smoothies fruités', 'pexels-kelvin-agustinus-7190365.webp');
+INSERT INTO Gallery_dishes ()
+VALUES (DEFAULT, 'La tourte à la viande', 'pexels-nishant-aneja-2955816.webp');
 
 INSERT INTO Schedule ()
 VALUES (DEFAULT, 'lundi', '12:00', '14:00', '19:00', '22:00');
@@ -122,32 +189,39 @@ INSERT INTO Schedule ()
 VALUES (DEFAULT, 'dimanche', '12:30', '14:00', NULL, NULL);
 
 INSERT INTO Menus ()
-VALUES (DEFAULT, 'La bonne Régalade');
+VALUES (DEFAULT, 'Pour les petits');
 INSERT INTO Formulas ()
-VALUES (DEFAULT, (SELECT id FROM Menus WHERE title='La bonne Régalade'), 'Formule Complète', 'entrée + plat + dessert', '19.99');
+VALUES (DEFAULT, (SELECT id FROM Menus WHERE title='Pour les petits'), 'Formule du midi', 'Plat principal + au choix Entrée ou Dessert', '16.99');
+INSERT INTO Formulas ()
+VALUES (DEFAULT, (SELECT id FROM Menus WHERE title='Pour les petits'), 'Formule du soir', 'Plat principal + au choix Entrée ou Dessert', '14.99');
 
 INSERT INTO Menus ()
-VALUES (DEFAULT, 'Au coin du feu');
+VALUES (DEFAULT, 'À emporter');
 INSERT INTO Formulas ()
-VALUES (DEFAULT, (SELECT id FROM Menus WHERE title='Au coin du feu'), 'Formule Complète 2', 'entrée + plat + dessert', '24.99');
+VALUES (DEFAULT, (SELECT id FROM Menus WHERE title='À emporter'), 'Le Végétarien', 'Sandwich le Végétarien + Dessert Boules de coco
+(service du midi uniquement)', '9.99');
 INSERT INTO Formulas ()
-VALUES (DEFAULT, (SELECT id FROM Menus WHERE title='Au coin du feu'), 'Formule Allégée', 'plat + dessert ou entrée', '24.99');
+VALUES (DEFAULT, (SELECT id FROM Menus WHERE title='À emporter'), 'Le Rustique', 'Sandwich le Rustique + Dessert Smoothie fruité
+(service du midi uniquement)', '9.99');
 
 INSERT INTO Menus ()
-VALUES (DEFAULT, 'Le Sans limites');
+VALUES (DEFAULT, 'Entre amis');
 INSERT INTO Formulas ()
-VALUES (DEFAULT, (SELECT id FROM Menus WHERE title='Le Sans limites'), 'Formule Complète 3', 'entrée + plat + dessert', '24.99');
-INSERT INTO Formulas ()
-VALUES (DEFAULT, (SELECT id FROM Menus WHERE title='Le Sans limites'), 'Formule Allégée 2', 'plat + dessert ou entrée', '24.99');
+VALUES (DEFAULT, (SELECT id FROM Menus WHERE title='Entre amis'), 'À partager', 'Entrée: Plateau de charcuterie ou Tourtes à la viande
+Plat principal: La pizza au four
+Dessert: au choix', '34.99');
 
 INSERT INTO Menus ()
-VALUES (DEFAULT, 'Le Tradition');
+VALUES (DEFAULT, 'Le Classique');
 INSERT INTO Formulas ()
-VALUES (DEFAULT, (SELECT id FROM Menus WHERE title='Le Tradition'), 'Formule Complète 4', 'entrée + plat + dessert', '19.99');
-
-INSERT INTO Menus ()
-VALUES (DEFAULT, 'Le Gourmand');
+VALUES (DEFAULT, (SELECT id FROM Menus WHERE title='Le Classique'), 'Formule complète (midi)', 'Entrée + Plat principal + Dessert au choix
+(service du midi uniquement)', '28.99');
 INSERT INTO Formulas ()
-VALUES (DEFAULT, (SELECT id FROM Menus WHERE title='Le Gourmand'), 'Formule Complète 3', 'entrée + plat + dessert', '24.99');
+VALUES (DEFAULT, (SELECT id FROM Menus WHERE title='Le Classique'), 'Formule allégée (midi)', 'Plat principal + Entrée ou Dessert au choix
+(service du midi uniquement)', '19.99');
 INSERT INTO Formulas ()
-VALUES (DEFAULT, (SELECT id FROM Menus WHERE title='Le Gourmand'), 'Formule Allégée 2', 'plat + dessert ou entrée', '24.99');
+VALUES (DEFAULT, (SELECT id FROM Menus WHERE title='Le Classique'), 'Formule complète (soir)', 'Entrée + Plat principal + Dessert au choix
+(service du soir uniquement)', '24.99');
+INSERT INTO Formulas ()
+VALUES (DEFAULT, (SELECT id FROM Menus WHERE title='Le Classique'), 'Formule allégée (soir)', 'Plat principal + Entrée ou Dessert au choix
+(service du soir uniquement)', '14.99');
